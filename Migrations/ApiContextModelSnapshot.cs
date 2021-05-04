@@ -42,7 +42,7 @@ namespace InsightDash.API.Migrations
 
             modelBuilder.Entity("InsightDash.API.Models.Order", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -53,13 +53,13 @@ namespace InsightDash.API.Migrations
                     b.Property<int?>("Customerid")
                         .HasColumnType("integer");
 
-                    b.Property<decimal>("orderTotal")
-                        .HasColumnType("numeric");
-
-                    b.Property<DateTime>("placed")
+                    b.Property<DateTime>("Placed")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("id");
+                    b.Property<decimal>("Total")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("Customerid");
 

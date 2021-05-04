@@ -41,16 +41,16 @@ namespace InsightDash.API.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Customerid = table.Column<int>(type: "integer", nullable: true),
-                    orderTotal = table.Column<decimal>(type: "numeric", nullable: false),
-                    placed = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    Total = table.Column<decimal>(type: "numeric", nullable: false),
+                    Placed = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     Completed = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.id);
+                    table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Orders_Customers_Customerid",
                         column: x => x.Customerid,
