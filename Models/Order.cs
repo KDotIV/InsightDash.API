@@ -4,10 +4,10 @@ namespace InsightDash.API.Models
 {
     public class Order
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public Customer Customer { get; set; }
-        public decimal orderTotal { get; set; }
-        public DateTime placed { get; set; }
+        public decimal Total { get; set; }
+        public DateTime Placed { get; set; }
         public DateTime? Completed { get; set; }
         
     }
