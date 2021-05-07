@@ -63,6 +63,9 @@ namespace InsightDash.API
             });
 
             seed.SeedData(20, 1000);
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllerRoute("default", "api/{controller}/{action}/{id?}");
+            });
         }
     }
 }
