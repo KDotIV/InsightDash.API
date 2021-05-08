@@ -58,7 +58,7 @@ namespace InsightDash.API.Controllers
         {
             var orders = _ctx.Orders.Include(order => order.Customer).ToList();
 
-            var groupResult = orders.GroupBy(order => order.Customer.state)
+            var groupResult = orders.GroupBy(order => order.Customer.id)
                 .ToList()
                 .Select(grp => new 
                 {
@@ -70,12 +70,12 @@ namespace InsightDash.API.Controllers
 
             return Ok(groupResult);
         }
-        [HttpGet("GetOrder/{}", Name = "GetOrder")]
+        [HttpGet("GetOrder/{id}", Name = "GetOrder")]
         public IActionResult GetOrder(int id)
         {
             var orderResult =  _ctx.Orders.Include(order => order.Customer)
             .First(order => order.Id == id);
-            
+
             return Ok(orderResult);
         }
     }
