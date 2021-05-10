@@ -29,6 +29,10 @@ namespace InsightDash.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(opt => {
+                opt.AddPolicy("CorsPolicy",
+                cors => cors.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            });
             _connectionString = Configuration["secretsConnectionString"];
 
             services.AddControllers();
@@ -49,6 +53,7 @@ namespace InsightDash.API
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "InsightDash.API v1"));
+                app.UseCors("CorsPolicy");
             }
 
             app.UseHttpsRedirection();
@@ -63,6 +68,9 @@ namespace InsightDash.API
             });
 
             seed.SeedData(20, 1000);
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllerRoute("default", "api/{controller}/{action}/{id?}");
+            });
         }
     }
 }

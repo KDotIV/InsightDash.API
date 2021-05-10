@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 namespace Insight.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ValuesController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
